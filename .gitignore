@@ -1,0 +1,9 @@
+# for Chez Scheme Implementation.
+*.ss~
+*.ss#*
+.#*.ss
+
+# for Guile Scheme Implementation.
+*.scm~
+*.scm#*
+.#*.scm
