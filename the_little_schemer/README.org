@@ -116,7 +116,6 @@
        (lambda (x)
          (and (not (pair? x)) (not (null? x)))))
    #+END_SRC
-
 2. /car/ an empty list ()? (also for /cdr/)
 
    + *book*: No Answer.
@@ -163,5 +162,4 @@
 
    3. *elisp*: for list: ~(quote ())~ ~​'()~ ~()~.
 
-2. in practice, ~(null? \alpha)~ is false for everything except a non-empty
-   list.
+2. in practice, ~(null? α)~ is false for everything except the empty list.
