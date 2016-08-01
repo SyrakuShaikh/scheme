@@ -151,12 +151,17 @@
 
      - *elisp*: a pair.
 
+5. /null?/ in *book* and *segc*; but /null/ in *elisp*.
+
 *** Notes
 
 1. wanna refer to an /atom/ or a /list/? Use *quote*:
 
    1. ~(quote )~
 
-   2. or a single quote prefix.
+   2. or a single quote prefix ~​'()~.
 
-   3. *elisp*: for list: ~(quote ())~ ~​'()~ ~()~
+   3. *elisp*: for list: ~(quote ())~ ~​'()~ ~()~.
+
+2. in practice, ~(null? \alpha)~ is false for everything except a non-empty
+   list.
