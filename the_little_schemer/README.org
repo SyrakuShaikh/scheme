@@ -99,3 +99,20 @@
    The primitive /eq?/ takes two arguments.
 
    Each must be an non-numeric atom.
+
+** Else
+
+*** Diff from Spacemacs+Geiser+Chez
+
+1. ~atom?~
+
+   The default operation ~atom?~ DO NOT behave as expected by the book.
+
+   One needs to define a new ~atom?~ function which has been described in the
+   /Preface/.
+
+   #+BEGIN_SRC scheme
+     (define atom?
+       (lambda (x)
+         (and (not (pair? x)) (not (null? x)))))
+   #+END_SRC
