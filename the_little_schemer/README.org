@@ -116,3 +116,47 @@
        (lambda (x)
          (and (not (pair? x)) (not (null? x)))))
    #+END_SRC
+
+2. /car/ an empty list ()? (also for /cdr/)
+
+   + *book*: No Answer.
+
+   + *segc*: Exception in car.
+
+   + *elisp*: /nil/.
+
+3. /car/ an atom? (also for /cdr/)
+
+   + *book*: No Answer.
+
+   + *segc*: Exception in car.
+
+   + *elisp*: Error.
+
+4. /cons/
+
+   + when the second argument is an atom.
+
+     - *book*: No Answer.
+
+     - *segc*: give a /pair/ ~( . )~.
+
+     - *elisp*: same as *segc*.
+
+   + when arguments are two values.
+
+     - *book*: works in practice. can operated by /car/ and /cdr/.
+
+     - *segc*: a pair.
+
+     - *elisp*: a pair.
+
+*** Notes
+
+1. wanna refer to an /atom/ or a /list/? Use *quote*:
+
+   1. ~(quote )~
+
+   2. or a single quote prefix.
+
+   3. *elisp*: for list: ~(quote ())~ ~\'()~ ~()~
