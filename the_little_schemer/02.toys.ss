@@ -19,3 +19,24 @@
 
 (car (cons 0 1))
 (cdr (cons 0 1))
+
+(null? 'a)
+;; #f
+(null? '())
+;; #t
+
+(define atom?
+  (lambda (x)
+    (and (not (pair? x)) (not (null? x)))))
+(atom? 'x)
+(atom? '())
+
+(eq? 'apple 'apple)
+
+(eq? 1 1)
+;; #t
+(eq? 1.2 1.2)
+;; #f
+
+(eq? (cdr '(soured milk)) 'milk)
+;; #f
