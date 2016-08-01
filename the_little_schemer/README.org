@@ -116,6 +116,14 @@
        (lambda (x)
          (and (not (pair? x)) (not (null? x)))))
    #+END_SRC
+
+   Also, one can define ~atom?~ in Lisp:
+
+   #+BEGIN_SRC elisp
+     (defun atom? (x)
+       (not (listp x)))
+   #+END_SRC
+
 2. /car/ an empty list ()? (also for /cdr/)
 
    + *book*: No Answer.
@@ -152,6 +160,8 @@
 
 5. /null?/ in *book* and *segc*; but /null/ in *elisp*.
 
+6. /eq?/ in *books* and *segc*; but /eq/ in *elisp*.
+
 *** Notes
 
 1. wanna refer to an /atom/ or a /list/? Use *quote*:
@@ -163,3 +173,6 @@
    3. *elisp*: for list: ~(quote ())~ ~​'()~ ~()~.
 
 2. in practice, ~(null? α)~ is false for everything except the empty list.
+
+3. in practice, /eq?/ maybe apply to two non-atom arguments. It can be used to
+   compare two lists or two numbers (only intergers?).
