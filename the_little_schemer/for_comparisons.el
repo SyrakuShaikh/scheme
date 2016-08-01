@@ -6,3 +6,11 @@
 
 (cdr '())
 ;; nil
+
+(car 'a)
+;; Error.
+
+(cons '(a) 'b)
+;; ((a) . b)
+(cons 0 1)
+;; (0 . 1)
