@@ -176,3 +176,6 @@
 
 3. in practice, /eq?/ maybe apply to two non-atom arguments. It can be used to
    compare two lists or two numbers (only intergers?).
+
+4. ~(or ..)~ ask two questions, one at a time. If the first one is true it stops
+   and answers true just like other programming languages.
