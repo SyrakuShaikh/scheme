@@ -30,3 +30,14 @@
 ;;;; first-occurrence as required by the book.
 ;;;; mrember1 is called all-occurrences which matches the 'remove a member'
 ;;;; in my opinion.
+
+;; the book's version
+(define rember
+  (lambda (a lat)
+    (cond
+     ((null? lat) (quote ()))
+     (else (cond
+            ((eq? (car lat) a) (cdr lat))
+            (else (cons (car lat)
+                        (rember a
+                                (cdr lat)))))))))
