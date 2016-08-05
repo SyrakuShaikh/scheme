@@ -182,7 +182,7 @@
 
 5. the history or meanings of /car/, /cdr/, /cond/, and /cons/.
 
-   1. *car*: *C*​ontents of the *A*​ddress part of *R*egister number.
+   1. *car*: \textbf{C}ontents of the *A*​ddress part of *R*egister number.
 
    2. *cdr*: *C*ontents of the *D*ecrement part of *R*egister number.
 
