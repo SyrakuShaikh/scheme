@@ -48,3 +48,71 @@
 ;;; the simplified version asks three.
 ;;; two links for reference:
 ;;; https://goo.gl/DL35Y7 and https://goo.gl/fkP6bJ
+
+;; (firsts l) new function by me first
+(define mfirsts
+  (lambda (l)
+    (cond
+     ((null? l) '())
+     (else (cons (car (car l))
+                 (mfirsts (cdr l)))))))
+(mfirsts '((apple peach pumpkin)
+           (plum pear cherry)
+           (grape raisin pea)
+           (bean carrot eggplant)))
+;; (apple plum grape bean)
+(mfirsts '((a b) (c d) (e f)))
+;; (a c e)
+(mfirsts '())
+;; ()
+(mfirsts '((five plums)
+           (four)
+           (eleven green oranges)))
+;; (five four eleven)
+(mfirsts '(((five plums) four)
+           (eleven green oranges)
+           ((no) more)))
+;; ((five plums) eleven (no))
+;; OK, all tests pass!
+;;; and the same with the book's
+
+;; try (seconds l)
+;;; sandwich with a 'cdr'
+
+;; insertR (R for right) function by me
+(define minsertR
+  (lambda (new old lat)
+    (cond
+     ((null? lat) '())
+     (else (cond
+            ((eq? old (car lat)) (cons (car lat)
+                                       (cons new (cdr lat))))
+            (else (cons (car lat)
+                        (minsertR new old (cdr lat)))))))))
+(minsertR 'topping 'fudge '(ice cream with fudge for dessert))
+;; (ice cream with fudge topping for dessert)
+;; OK.
+;;; the book's version is a little simpler
+;;; with changing (cons (car lat) (cons new (cdr lat)))
+;;; to (cons old (cons new (cdr lat)))
+;;; fine. I forget the 'eq?'.
+;; it's easy to implement 'insertL' (L for left)
+
+;;; the 'subst' functions are also easy, ignore them here.
+;;; the 'multirember' function is already defined as 'mrember1' above.
+
+;; now try 'multiinsertR'
+(define mmultiitR
+  (lambda (new old lat)
+    (cond
+     ((null? lat) '())
+     (else (cond
+            ((eq? old (car lat))
+             (cons old
+                   (cons new
+                         (mmultiitR new old (cdr lat)))))
+            (else
+             (cons (car lat) (mmultiitR new old (cdr lat)))))))))
+(mmultiitR 'X 'a '(a b c d a e f a g))
+;; (a X b c d a X e f a X g)
+;;; Correct!
