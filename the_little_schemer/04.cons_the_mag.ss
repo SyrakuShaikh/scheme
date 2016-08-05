@@ -39,5 +39,12 @@
      (else (cond
             ((eq? (car lat) a) (cdr lat))
             (else (cons (car lat)
-                        (rember a
-                                (cdr lat)))))))))
+                        (rember
+                         a (cdr lat)))))))))
+;; according to the book, this version is better because
+;; it's function structure coincides with the argument's structure.
+;;; to be specific,
+;;; The First Commandment. ask two questions: null? or else
+;;; the simplified version asks three.
+;;; two links for reference:
+;;; https://goo.gl/DL35Y7 and https://goo.gl/fkP6bJ
