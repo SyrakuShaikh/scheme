@@ -141,3 +141,98 @@
 ;;; however take the '=', '<', and '>' functions together into considerations
 ;;; first equ (just the above) and then use it to define '<' and '>'
 ;;; is the same with the book's procedure.
+
+;; function 'length': get the number of S-expressions in a list.
+;; already have in Chez.
+(define sleng
+  (lambda (l)
+    (cond
+     ((null? l) 0)
+     (else (ad1 (sleng (cdr l)))))))
+(sleng '(a b c))
+;; 3
+(sleng '(hotdogs with mustard sauerkraut and pickles))
+;; 6
+;;; OK, this is easy.
+
+;; function 'pick': pick the nth element of a list.
+;; n is non-negative integer.
+(define pick
+  (lambda (n l)
+    (cond
+     ((or (zero? n) (null? l)) '())
+     (else (cond
+            ((zero? (su1 n)) (car l))
+            (else (pick (su1 n) (cdr l))))))))
+(pick 4 '(lasagna spaghetti ravioli macaroni meatball))
+;; macaroni
+(pick 0 '(a))
+;; ()
+;; now 'rempick': remove the 'pick' one.
+(define rempick
+  (lambda (n l)
+    (cond
+     ((or (zero? n) (null? l)) '())
+     (else (cond
+            ((zero? (su1 n)) (cdr l))
+            (else
+             (cons (car l) (rempick (su1 n) (cdr l)))))))))
+(rempick 4 '(lasagna spaghetti ravioli macaroni meatball))
+;; (lasagna spaghetti ravioli meatball)
+
+;; function 'non-nums': remove all numeric elements of a list.
+(define non-nums
+  (lambda (l)
+    (cond
+     ((null? l) '())
+     (else (cond
+            ((number? (car l)) (non-nums (cdr l)))
+            (else (cons (car l) (non-nums (cdr l)))))))))
+(non-nums '(a 2 b 12 3 c 0 d -1))
+;; (a b c d)
+
+;; opposite, 'all-nums'
+(define all-nums
+  (lambda (l)
+    (cond
+     ((null? l) '())
+     (else (cond
+            ((number? (car l)) (cons (car l) (all-nums (cdr l))))
+            (else (all-nums (cdr l))))))))
+(all-nums '(a 2 b 12 3 c 0 d -1))
+;; (2 12 3 0 -1)
+
+;; 'eqan?': = for two numbers and eq? for nons.
+(define eqan?
+  (lambda (m n)
+    (cond
+     ((and (number? m) (number? n)) (equ m n))
+     ((or (number? m) (number? n)) #f)
+     (else (eq? m n)))))
+(eqan? 1 2)
+;; #f
+(eqan? 3 3)
+;; #t
+(eqan? 3 'a)
+;; #f
+(eqan? 'a 'a)
+;; #t
+
+;; function 'occur': counts the number of an element
+;; that appears in a list.
+(define occur
+  (lambda (a l)
+    (cond
+     ((null? l) 0)
+     (else
+      (cond
+       ((eqan? a (car l)) (ad1 (occur a (cdr l))))
+       (else (occur a (cdr l))))))))
+(occur 'a '(a b c d a a c 0 1 b d))
+;; 3
+;;; OK, correct.
+
+;; function 'one?': to test whether a number equals 1.
+(define one?
+  (lambda (n)
+    (eqan? n 1)))
