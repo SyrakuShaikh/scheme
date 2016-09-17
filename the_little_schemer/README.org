@@ -1,10 +1,7 @@
 #+OPTIONS: tex:t
 * Commandments, Rules, and Laws
-
-
 ** First-Class
 *** The Ten Commandments
-
  * The First Commandment
 
    When recurring on a list of atoms, /lat/, ask two questions about it: ~(null?
@@ -74,7 +71,6 @@
    Build functions to collect more than one value at a time.
 
 *** The Five Rules
-
  * The Law of Car
 
    The primitive /car/ is defined only for non-empty lists.
@@ -103,9 +99,7 @@
    Each must be an non-numeric atom.
 
 ** Else
-
 *** Diff from Spacemacs+Geiser+Chez
-
 1. ~atom?~
 
    The default operation ~atom?~ DO NOT behave as expected by the book.
@@ -165,7 +159,6 @@
 6. /eq?/ in *books* and *segc*; but /eq/ in *elisp*.
 
 *** Notes
-
 1. wanna refer to an /atom/ or a /list/? Use *quote*:
 
    1. ~(quote )~
