@@ -126,3 +126,24 @@
 (eqlist? '(beef ((sausage)) (and (soda))) '(beef ((sausage)) (and (soda))))
 ;; #t
 ;; correct! But asked 12 questions!!!
+(define eqlist?
+  (lambda (l1 l2)
+    (cond
+     ((null? l1) (null? l2))
+     ((null? l2) #f)
+     ((atom? (car l1))
+      (cond
+       ((atom? (car l2))
+        (and (eq? (car l1) (car l2)) (eqlist? (cdr l1) (cdr l2))))
+       (else #f)))
+     ((atom? (car l2)) #f)
+     (else
+      (and (eqlist? (car l1) (car l2)) (eqlist? (cdr l1) (cdr l2)))))))
+;; OK. 10 questions.
+;; looks simpler than the book's.
+
+;; In fact, "10 questions" means that
+;; there are 10 "?" in the function's definition.
+;; However, the worst situation when calling the function
+;; only asks 6 questions.
+;; Can the codes contain less than 10 questions?
