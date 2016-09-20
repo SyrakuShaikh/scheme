@@ -184,3 +184,16 @@
    3. *cond*: *cond*​itions.
 
    4. *cons*: *cons*​tructs.
+
+6. /cond/, /and/, and /or/.
+
+   ~(cond ..)~ has the property of note considering all of its arguments.
+   Because of this property, however, neither ~(and ..)~ nor ~(or ..)~ can be
+   defined as functions in terms of ~(cond ..)~, though both ~(and ..)~ and ~(or
+   ..)~ can be expressed as abbreviations of ~(cond ..)~-expressions:
+
+   ~(and ɑ ꞵ) = (cond (ɑ ꞵ) (else #f))~,
+
+   and
+
+   ~(or ɑ ꞵ) = (cond (ɑ #t) (else ꞵ))~.
